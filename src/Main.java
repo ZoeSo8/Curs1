@@ -1,15 +1,92 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    public static Employee[] employees = new Employee[10];
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+    private static void printTabel() {
+        for (Employee employee : employees) {
+            System.out.println(employee.getId() + " " + employee.getName() + " ,зарплата " + employee.getSalary() + " рублей");
         }
+    }
+
+    private static void summSalary() {
+        int summ = 0;
+        for (Employee employee : employees) {
+                summ += employee.getSalary();
+        }
+        System.out.println("Сумма трат на зарплату сотрудникам за месяц составила " + summ + " рублей");
+    }
+
+
+    private static void calculateMediumSalary() {
+        int medium = 0;
+        int summ = 0;
+        int departmentWorker = 0;
+        for (Employee employee : employees) {
+                summ += employee.getSalary();
+            departmentWorker = employee.getDepartment();
+            medium = summ / departmentWorker;
+        }
+        System.out.println("Сумма средняя трат на зарплату сотрудникам за месяц составила " + medium + " рублей");
+    }
+
+    private static void maxSalary() {
+        int maxSalary = -1;
+        for (Employee employee : employees) {
+            for (int i = 0; i < employees.length; i++) {
+                if (employee.getSalary() > maxSalary) {
+                    maxSalary = employee.getSalary();
+                }
+            }
+        }
+        System.out.println("Максимальная зарплата сотрудника составляет " + maxSalary + " рублей");
+    }
+
+    private static void minSalary() {
+
+        int minSalary = Integer.MAX_VALUE;
+        for (Employee employee : employees) {
+            for (int i = 0; i < employees.length; i++) {
+                if (employee.getSalary() < minSalary) {
+                    minSalary = employee.getSalary();
+                }
+            }
+        }
+        System.out.println("Минимальная зарплата сотрудника составляет " + minSalary + " рублей");
+    }
+
+    private static void printFullName() {
+        for (Employee employee : employees)
+            System.out.println(employee.getName());
+    }
+
+    private static void calculateIndexSalary(double procentPlus) {
+        double index = 0;
+        for (Employee employee : employees) {
+            for (int i = 0; i < employees.length; i++)
+                index = employee.getSalary()*procentPlus;
+            System.out.println(index);
+        }
+    }
+
+    public static void main(String[] args) {
+        employees[0] = new Employee("Быкова Евгения Владимировна", 1, 750000);
+        employees[1] = new Employee("Яковлева Марина Сергеевна", 1, 100000);
+        employees[2] = new Employee("Тенишева Анна Михайловна", 1, 150000);
+        employees[3] = new Employee("Беляева Светлана Викторовна", 2, 150000);
+        employees[4] = new Employee("Гасанова Сона", 3, 15000);
+        employees[5] = new Employee("Максимова Виктория Викторовна", 3, 70000);
+        employees[6] = new Employee("Лола", 2, 23000);
+        employees[7] = new Employee("Мошина Елена Алексанровна", 2, 25000);
+        employees[8] = new Employee("Колибаба Александр Иванович", 1, 250000);
+        employees[9] = new Employee("Никонова Полина Викторовна", 3, 30000);
+
+        printTabel();
+        summSalary();
+        maxSalary();
+        minSalary();
+        calculateMediumSalary();
+        printFullName();
+        calculateIndexSalary(1.1);
     }
 }
