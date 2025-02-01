@@ -12,7 +12,6 @@ public class Main {
     private static void summSalary() {
         int summ = 0;
         for (Employee employee : employees) {
-            if (employee.getDepartment() == 2)
                 summ += employee.getSalary();
         }
         System.out.println("Сумма трат на зарплату сотрудникам за месяц составила " + summ + " рублей");
@@ -24,7 +23,6 @@ public class Main {
         int summ = 0;
         int departmentWorker = 0;
         for (Employee employee : employees) {
-            if (employee.getDepartment() == 2)
                 summ += employee.getSalary();
             departmentWorker = employee.getDepartment();
             medium = summ / departmentWorker;
@@ -36,7 +34,7 @@ public class Main {
         int maxSalary = -1;
         for (Employee employee : employees) {
             for (int i = 0; i < employees.length; i++) {
-                if (employee.getSalary() > maxSalary && employee.getDepartment() == 2) {
+                if (employee.getSalary() > maxSalary) {
                     maxSalary = employee.getSalary();
                 }
             }
@@ -49,7 +47,7 @@ public class Main {
         int minSalary = Integer.MAX_VALUE;
         for (Employee employee : employees) {
             for (int i = 0; i < employees.length; i++) {
-                if (employee.getSalary() < minSalary && employee.getDepartment() == 1) {
+                if (employee.getSalary() < minSalary) {
                     minSalary = employee.getSalary();
                 }
             }
